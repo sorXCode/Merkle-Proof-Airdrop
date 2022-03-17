@@ -22,50 +22,11 @@ task("accounts", "Prints the list of accounts", async () => {
 // Go to https://buidler.dev/config/ to learn more
 module.exports = {
   networks: {
-    hardhat: {
-      forking: {
-        url: process.env.MATIC_URL,
-        // blockNumber: 16712208,
-        timeout: 1200000,
-      },
+    rinkeby: {
+      url: process.env.RINKEBY_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-    localhost: {
-      timeout: 1600000,
-    },
-
-    matic: {
-      url: process.env.MATIC_URL,
-      // url: 'https://rpc-mainnet.maticvigil.com/',
-      accounts: [process.env.SECRET],
-      //   // blockGasLimit: 20000000,
-      //   blockGasLimit: 20000000,
-      gasPrice: 1000000000,
-      // timeout: 90000
-    },
-    // mumbai: {
-    //   url: 'https://rpc-mumbai.matic.today',
-    //   accounts: [process.env.SECRET],
-    //   blockGasLimit: 20000000,
-    //   gasPrice: 1000000000
-    // },
-    // gorli: {
-    //   url: process.env.GORLI,
-    //   accounts: [process.env.SECRET],
-    //   blockGasLimit: 20000000,
-    //   gasPrice: 2100000000
-    // },
-    kovan: {
-      url: process.env.KOVAN_URL,
-      accounts: [process.env.SECRET],
-      gasPrice: 5000000000,
-      timeout: 200000000,
-    },
-    // ethereum: {
-    //   url: process.env.MAINNET_URL,
-    //   accounts: [process.env.SECRET],
-    //   blockGasLimit: 20000000,
-    //   gasPrice: 2100000000
-    // }
   },
   gasReporter: {
     currency: "USD",
